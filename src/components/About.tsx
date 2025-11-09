@@ -7,6 +7,10 @@ const AboutSection = styled.section`
   background: ${(props) => props.theme.backgroundAlt};
   position: relative;
 
+  @media (max-width: 768px) {
+    padding: 4rem 1rem;
+  }
+
   &::before {
     content: '';
     position: absolute;
@@ -20,6 +24,28 @@ const AboutSection = styled.section`
       ${(props) => props.theme.accent},
       transparent
     );
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 60px,
+        ${(props) => props.theme.accent}01 60px,
+        ${(props) => props.theme.accent}01 61px
+      ),
+      radial-gradient(
+        circle at 10% 20%,
+        ${(props) => props.theme.accent}03 0%,
+        transparent 40%
+      );
+    pointer-events: none;
   }
 `;
 
@@ -124,6 +150,10 @@ const StatCard = styled.div`
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 4px 12px ${(props) => props.theme.shadow};
 
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+
   &:hover {
     transform: translateY(-5px);
     border-color: ${(props) => props.theme.accent}80;
@@ -135,17 +165,31 @@ const StatCard = styled.div`
     height: 50px;
     margin: 0 auto 1rem;
     color: ${(props) => props.theme.accent};
+
+    @media (max-width: 768px) {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 0.75rem;
+    }
   }
 
   h3 {
     font-size: 2rem;
     color: ${(props) => props.theme.accent};
     margin-bottom: 0.5rem;
+
+    @media (max-width: 768px) {
+      font-size: 1.5rem;
+    }
   }
 
   p {
     color: ${(props) => props.theme.textSecondary};
     font-size: 1rem;
+
+    @media (max-width: 768px) {
+      font-size: 0.9rem;
+    }
   }
 `;
 
@@ -204,7 +248,7 @@ export const About: React.FC = () => {
           <StatCard>
             <Scale className="icon" />
             <h3>OAB/BA</h3>
-            <p>44.444</p>
+            <p>71.291</p>
           </StatCard>
 
           <StatCard>

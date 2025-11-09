@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { Menu, X, Sun, Moon, ArrowUpRight } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 
+const WHATSAPP_URL = 'https://wa.me/5571983561288';
+
 const HeaderContainer = styled.header<{ $scrolled: boolean }>`
   position: fixed;
   top: 0;
@@ -199,10 +201,7 @@ const CTAButton = styled.a`
 const Overlay = styled.div<{ $isOpen: boolean }>`
   display: ${(props) => (props.$isOpen ? 'block' : 'none')};
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background: rgba(0, 0, 0, 0.7);
   z-index: 999;
 
@@ -256,7 +255,7 @@ export const Header: React.FC = () => {
             <NavLink onClick={() => scrollToSection('contato')}>
               Contato
             </NavLink>
-            <CTAButton href="https://wa.me/5571999999999" target="_blank">
+            <CTAButton href={WHATSAPP_URL} target="_blank">
               Consulta Urgente
               <ArrowUpRight />
             </CTAButton>

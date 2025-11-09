@@ -2,6 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { Phone, MessageCircle } from 'lucide-react';
 
+const WHATSAPP_URL = 'https://wa.me/5571983561288';
+const PHONE_NUMBER = '+5571983561288';
+
 const HeroSection = styled.section`
   min-height: 100vh;
   display: flex;
@@ -62,7 +65,11 @@ const HeroText = styled.div`
     margin-bottom: 1rem;
     line-height: 1.1;
     font-weight: 700;
-    background: linear-gradient(135deg, #ffffff, #d4af37);
+    background: linear-gradient(
+      135deg,
+      #ffffff,
+      ${(props) => props.theme.accent}
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -79,7 +86,7 @@ const HeroText = styled.div`
   .subtitle {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.5rem;
-    color: #d4af37;
+    color: ${(props) => props.theme.accent};
     margin-bottom: 1.5rem;
     font-weight: 500;
     letter-spacing: 0.5px;
@@ -91,7 +98,7 @@ const HeroText = styled.div`
 
   .oab {
     font-size: 1.1rem;
-    color: #999;
+    color: ${(props) => props.theme.textSecondary};
     margin-bottom: 1.5rem;
     font-weight: 500;
   }
@@ -99,7 +106,7 @@ const HeroText = styled.div`
   p {
     font-size: 1.1rem;
     line-height: 1.8;
-    color: #cccccc;
+    color: ${(props) => props.theme.textSecondary};
     margin-bottom: 2rem;
 
     @media (max-width: 768px) {
@@ -124,7 +131,11 @@ const MobileHeroHeader = styled.div`
     margin-bottom: 1rem;
     line-height: 1.1;
     font-weight: 700;
-    background: linear-gradient(135deg, #ffffff, #d4af37);
+    background: linear-gradient(
+      135deg,
+      #ffffff,
+      ${(props) => props.theme.accent}
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -137,7 +148,7 @@ const MobileHeroHeader = styled.div`
   .subtitle {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.25rem;
-    color: #d4af37;
+    color: ${(props) => props.theme.accent};
     margin-bottom: 1rem;
     font-weight: 500;
     letter-spacing: 0.5px;
@@ -149,7 +160,7 @@ const MobileHeroHeader = styled.div`
 
   .oab {
     font-size: 1rem;
-    color: #999;
+    color: ${(props) => props.theme.textSecondary};
     margin-bottom: 0;
     font-weight: 500;
   }
@@ -168,7 +179,7 @@ const MobileHeroDescription = styled.div`
   p {
     font-size: 1rem;
     line-height: 1.8;
-    color: #cccccc;
+    color: ${(props) => props.theme.textSecondary};
     margin-bottom: 0;
 
     @media (max-width: 480px) {
@@ -205,8 +216,8 @@ const MobileHeroButtons = styled.div`
 
 const PrimaryButton = styled.a`
   font-family: 'Montserrat', sans-serif;
-  background: linear-gradient(135deg, #d4af37, #f4d03f);
-  color: #0a0a0a;
+  background: ${(props) => props.theme.accent};
+  color: #ffffff;
   padding: 1rem 2.5rem;
   border-radius: 50px;
   text-decoration: none;
@@ -220,7 +231,8 @@ const PrimaryButton = styled.a`
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+    box-shadow: 0 10px 30px ${(props) => props.theme.accent}40;
+    background: ${(props) => props.theme.accentSecondary};
   }
 
   svg {
@@ -232,8 +244,8 @@ const PrimaryButton = styled.a`
 const SecondaryButton = styled.a`
   font-family: 'Montserrat', sans-serif;
   background: transparent;
-  color: #d4af37;
-  border: 2px solid #d4af37;
+  color: ${(props) => props.theme.accent};
+  border: 2px solid ${(props) => props.theme.accent};
   padding: 1rem 2.5rem;
   border-radius: 50px;
   text-decoration: none;
@@ -246,8 +258,8 @@ const SecondaryButton = styled.a`
   font-size: 1rem;
 
   &:hover {
-    background: #d4af37;
-    color: #0a0a0a;
+    background: ${(props) => props.theme.accent};
+    color: #ffffff;
   }
 
   svg {
@@ -275,15 +287,15 @@ const HeroImage = styled.div`
   border-radius: 15px;
   background: linear-gradient(
       135deg,
-      rgba(212, 175, 55, 0.15),
+      ${(props) => props.theme.accent}15,
       rgba(0, 0, 0, 0.4)
     ),
     url('/hero-bg.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  box-shadow: 0 20px 60px rgba(212, 175, 55, 0.3);
-  border: 3px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 20px 60px ${(props) => props.theme.accent}30;
+  border: 3px solid ${(props) => props.theme.accent}30;
   position: relative;
   overflow: hidden;
 
@@ -296,7 +308,7 @@ const HeroImage = styled.div`
     bottom: 0;
     background: linear-gradient(
       135deg,
-      rgba(212, 175, 55, 0.1) 0%,
+      ${(props) => props.theme.accent}10 0%,
       transparent 50%,
       rgba(0, 0, 0, 0.2) 100%
     );
@@ -308,13 +320,13 @@ const Badge = styled.div`
   position: absolute;
   bottom: 2rem;
   right: 2rem;
-  background: rgba(212, 175, 55, 0.95);
-  color: #0a0a0a;
+  background: ${(props) => props.theme.accent}f0;
+  color: #ffffff;
   padding: 1rem 1.5rem;
   border-radius: 8px;
   font-weight: 700;
   font-size: 0.9rem;
-  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+  box-shadow: 0 10px 30px ${(props) => props.theme.accent}40;
 
   @media (max-width: 968px) {
     bottom: 1rem;
@@ -332,7 +344,7 @@ export const Hero: React.FC = () => {
         <HeroText>
           <h1>Luiz Lima</h1>
           <div className="subtitle">Advogado Criminalista</div>
-          <div className="oab">OAB/BA 44.444</div>
+          <div className="oab">OAB/BA 71.291</div>
           <p>
             Defesa humanizada e técnica, com foco na dignidade e liberdade.
             Atuação estratégica baseada em sólida formação acadêmica e
@@ -340,11 +352,11 @@ export const Hero: React.FC = () => {
             Penal.
           </p>
           <HeroButtons>
-            <PrimaryButton href="https://wa.me/5571999999999" target="_blank">
+            <PrimaryButton href={WHATSAPP_URL} target="_blank">
               <MessageCircle />
               WhatsApp
             </PrimaryButton>
-            <SecondaryButton href="tel:+5571999999999">
+            <SecondaryButton href={`tel:${PHONE_NUMBER}`}>
               <Phone />
               Ligar Agora
             </SecondaryButton>
@@ -360,7 +372,7 @@ export const Hero: React.FC = () => {
         <MobileHeroHeader>
           <h1>Luiz Lima</h1>
           <div className="subtitle">Advogado Criminalista</div>
-          <div className="oab">OAB/BA 44.444</div>
+          <div className="oab">OAB/BA 71.291</div>
         </MobileHeroHeader>
 
         {/* Layout Mobile - Description */}
@@ -375,11 +387,11 @@ export const Hero: React.FC = () => {
 
         {/* Layout Mobile - Buttons */}
         <MobileHeroButtons>
-          <PrimaryButton href="https://wa.me/5571999999999" target="_blank">
+          <PrimaryButton href={WHATSAPP_URL} target="_blank">
             <MessageCircle />
             WhatsApp
           </PrimaryButton>
-          <SecondaryButton href="tel:+5571999999999">
+          <SecondaryButton href={`tel:${PHONE_NUMBER}`}>
             <Phone />
             Ligar Agora
           </SecondaryButton>

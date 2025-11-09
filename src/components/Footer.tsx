@@ -2,10 +2,33 @@ import React from 'react';
 import styled from 'styled-components';
 import { Scale, Instagram, Linkedin, Mail, Phone } from 'lucide-react';
 
+const PHONE_NUMBER = '+5571983561288';
+const EMAIL = 'luiz@advocaciapenalempresarial.com.br';
+
 const FooterContainer = styled.footer`
-  background: ${(props) => props.theme.background};
+  background: linear-gradient(
+    135deg,
+    ${(props) => props.theme.backgroundAlt} 0%,
+    ${(props) => props.theme.background} 100%
+  );
   border-top: 1px solid ${(props) => props.theme.border};
   padding: 3rem 2rem 1.5rem;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+      circle at 30% 100%,
+      ${(props) => props.theme.accent}03 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
 `;
 
 const Container = styled.div`
@@ -168,7 +191,7 @@ export const Footer: React.FC = () => {
               clientes.
             </p>
             <p>
-              <strong>OAB/BA 44.444</strong>
+              <strong>OAB/BA 71.291</strong>
             </p>
             <SocialLinks>
               <SocialIcon
@@ -185,7 +208,7 @@ export const Footer: React.FC = () => {
               >
                 <Linkedin />
               </SocialIcon>
-              <SocialIcon href="mailto:contato@luizlima.adv.br">
+              <SocialIcon href={`mailto:${EMAIL}`}>
                 <Mail />
               </SocialIcon>
             </SocialLinks>
@@ -213,15 +236,15 @@ export const Footer: React.FC = () => {
             <h3>Contato</h3>
             <ul>
               <li>
-                <a href="tel:+5571999999999">
+                <a href={`tel:${PHONE_NUMBER}`}>
                   <Phone />
-                  (71) 99999-9999
+                  (71) 98356-1288
                 </a>
               </li>
               <li>
-                <a href="mailto:contato@luizlima.adv.br">
+                <a href={`mailto:${EMAIL}`}>
                   <Mail />
-                  contato@luizlima.adv.br
+                  {EMAIL}
                 </a>
               </li>
             </ul>
@@ -235,7 +258,6 @@ export const Footer: React.FC = () => {
             © {currentYear} Luiz Lima - Advogado Criminalista. Todos os direitos
             reservados.
           </p>
-          <p className="credits">Desenvolvido com ❤️ para defender a justiça</p>
         </FooterBottom>
       </Container>
     </FooterContainer>

@@ -11,8 +11,12 @@ import {
 
 const DifferentialsSection = styled.section`
   padding: 6rem 2rem;
-  background: ${(props) => props.theme.background};
+  background: ${(props) => props.theme.backgroundAlt};
   position: relative;
+
+  @media (max-width: 768px) {
+    padding: 4rem 1rem;
+  }
 
   &::before {
     content: '';
@@ -27,6 +31,23 @@ const DifferentialsSection = styled.section`
       ${(props) => props.theme.accent},
       transparent
     );
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(
+      circle at 50% 50%,
+      ${(props) => props.theme.accent}02 1px,
+      transparent 1px
+    );
+    background-size: 50px 50px;
+    opacity: 0.4;
+    pointer-events: none;
   }
 `;
 
@@ -74,6 +95,10 @@ const DifferentialCard = styled.div`
   text-align: center;
   box-shadow: 0 4px 12px ${(props) => props.theme.shadow};
 
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+
   &:hover {
     transform: translateY(-5px);
     border-color: ${(props) => props.theme.accent}80;
@@ -85,18 +110,34 @@ const DifferentialCard = styled.div`
     height: 50px;
     color: ${(props) => props.theme.accent};
     margin: 0 auto 1.5rem;
+
+    @media (max-width: 768px) {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 1rem;
+    }
   }
 
   h3 {
     font-size: 1.3rem;
     color: ${(props) => props.theme.text};
     margin-bottom: 1rem;
+
+    @media (max-width: 768px) {
+      font-size: 1.15rem;
+      margin-bottom: 0.75rem;
+    }
   }
 
   p {
     color: ${(props) => props.theme.textSecondary};
     line-height: 1.7;
     font-size: 0.95rem;
+
+    @media (max-width: 768px) {
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
   }
 `;
 
@@ -166,12 +207,22 @@ const ValueItem = styled.div`
   border-radius: 8px;
   border: 1px solid ${(props) => props.theme.border};
 
+  @media (max-width: 768px) {
+    padding: 1rem;
+    gap: 0.75rem;
+  }
+
   .check-icon {
     width: 24px;
     height: 24px;
     color: ${(props) => props.theme.accent};
     flex-shrink: 0;
     margin-top: 0.25rem;
+
+    @media (max-width: 768px) {
+      width: 20px;
+      height: 20px;
+    }
   }
 
   div {
@@ -179,12 +230,22 @@ const ValueItem = styled.div`
       color: ${(props) => props.theme.text};
       font-size: 1.1rem;
       margin-bottom: 0.5rem;
+
+      @media (max-width: 768px) {
+        font-size: 1rem;
+        margin-bottom: 0.35rem;
+      }
     }
 
     p {
       color: ${(props) => props.theme.textSecondary};
       font-size: 0.9rem;
       line-height: 1.6;
+
+      @media (max-width: 768px) {
+        font-size: 0.8rem;
+        line-height: 1.5;
+      }
     }
   }
 `;

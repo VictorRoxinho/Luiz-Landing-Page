@@ -11,12 +11,34 @@ import {
 
 const PracticeSection = styled.section`
   padding: 6rem 2rem;
-  background: ${(props) => props.theme.background};
+  background-image: url('/background2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+
+  @media (max-width: 768px) {
+    padding: 4rem 1rem;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    pointer-events: none;
+  }
 `;
 
 const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 `;
 
 const SectionTitle = styled.h2`
@@ -57,6 +79,12 @@ const Card = styled.div`
   position: relative;
   overflow: hidden;
   box-shadow: 0 4px 12px ${(props) => props.theme.shadow};
+  backdrop-filter: blur(10px);
+  background-color: ${(props) => props.theme.cardBackground}f5;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
 
   &::before {
     content: '';
@@ -90,6 +118,12 @@ const Card = styled.div`
     height: 50px;
     color: ${(props) => props.theme.accent};
     margin-bottom: 1.5rem;
+
+    @media (max-width: 768px) {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 1rem;
+    }
   }
 
   h3 {
@@ -99,6 +133,11 @@ const Card = styled.div`
     margin-bottom: 1rem;
     font-weight: 600;
     letter-spacing: 0.3px;
+
+    @media (max-width: 768px) {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
   }
 
   p {
@@ -108,6 +147,12 @@ const Card = styled.div`
     font-size: 1rem;
     margin-bottom: 1.5rem;
     font-weight: 400;
+
+    @media (max-width: 768px) {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
   }
 
   ul {
@@ -120,6 +165,12 @@ const Card = styled.div`
       padding-left: 1.25rem;
       position: relative;
 
+      @media (max-width: 768px) {
+        font-size: 0.85rem;
+        margin-bottom: 0.4rem;
+        padding-left: 1rem;
+      }
+
       &::before {
         content: '•';
         color: ${(props) => props.theme.accent};
@@ -127,6 +178,10 @@ const Card = styled.div`
         left: 0;
         font-weight: bold;
         font-size: 1.2rem;
+
+        @media (max-width: 768px) {
+          font-size: 1rem;
+        }
       }
     }
   }

@@ -2,10 +2,50 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Phone, Mail, MapPin, MessageCircle, Clock, Send } from 'lucide-react';
 
+const WHATSAPP_NUMBER = '5571983561288';
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
+const PHONE_NUMBER = '+5571983561288';
+const EMAIL = 'luiz@advocaciapenalempresarial.com.br';
+
 const ContactSection = styled.section`
   padding: 6rem 2rem;
   background: ${(props) => props.theme.background};
   position: relative;
+
+  @media (max-width: 768px) {
+    padding: 4rem 1rem;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 300px;
+    background: linear-gradient(
+      to top,
+      ${(props) => props.theme.accent}05 0%,
+      ${(props) => props.theme.accent}02 50%,
+      transparent 100%
+    );
+    pointer-events: none;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(
+      circle,
+      ${(props) => props.theme.accent}03 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
 `;
 
 const Container = styled.div`
@@ -63,6 +103,11 @@ const InfoCard = styled.div`
   gap: 1.5rem;
   transition: all 0.3s ease;
 
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+
   &:hover {
     border-color: ${(props) => props.theme.accent}80;
     transform: translateX(5px);
@@ -73,6 +118,11 @@ const InfoCard = styled.div`
     height: 40px;
     color: ${(props) => props.theme.accent};
     flex-shrink: 0;
+
+    @media (max-width: 768px) {
+      width: 32px;
+      height: 32px;
+    }
   }
 
   .content {
@@ -82,12 +132,21 @@ const InfoCard = styled.div`
       color: ${(props) => props.theme.accent};
       font-size: 1.2rem;
       margin-bottom: 0.5rem;
+
+      @media (max-width: 768px) {
+        font-size: 1.05rem;
+      }
     }
 
     p {
       color: ${(props) => props.theme.textSecondary};
       line-height: 1.7;
       font-size: 1rem;
+
+      @media (max-width: 768px) {
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
 
       a {
         color: ${(props) => props.theme.accent};
@@ -107,6 +166,10 @@ const ContactForm = styled.form`
   border: 1px solid ${(props) => props.theme.border};
   border-radius: 15px;
   padding: 2.5rem;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
 `;
 
 const FormGroup = styled.div`
@@ -189,6 +252,11 @@ const WhatsAppCTA = styled.div`
   text-align: center;
   margin-top: 4rem;
 
+  @media (max-width: 768px) {
+    padding: 2rem 1.5rem;
+    margin-top: 3rem;
+  }
+
   h3 {
     font-size: 2rem;
     color: #25d366;
@@ -204,6 +272,11 @@ const WhatsAppCTA = styled.div`
     font-size: 1.1rem;
     margin-bottom: 2rem;
     line-height: 1.7;
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
   }
 `;
 
@@ -221,6 +294,11 @@ const WhatsAppButton = styled.a`
   transition: all 0.3s ease;
   box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
 
+  @media (max-width: 768px) {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+
   &:hover {
     transform: translateY(-3px);
     box-shadow: 0 15px 40px rgba(37, 211, 102, 0.5);
@@ -230,6 +308,11 @@ const WhatsAppButton = styled.a`
   svg {
     width: 24px;
     height: 24px;
+
+    @media (max-width: 768px) {
+      width: 20px;
+      height: 20px;
+    }
   }
 `;
 
@@ -265,7 +348,6 @@ export const Contact: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Criar mensagem para WhatsApp
     const whatsappMessage = `Olá! Meu nome é ${formData.name}.
 
 Email: ${formData.email}
@@ -273,25 +355,13 @@ Telefone: ${formData.phone}
 
 Mensagem: ${formData.message}`;
 
-    const whatsappURL = `https://wa.me/5571999999999?text=${encodeURIComponent(
+    const messageURL = `${WHATSAPP_URL}?text=${encodeURIComponent(
       whatsappMessage
     )}`;
+    window.open(messageURL, '_blank');
 
-    // Abrir WhatsApp
-    window.open(whatsappURL, '_blank');
-
-    // Mostrar mensagem de sucesso
     setSubmitted(true);
-
-    // Limpar formulário
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      message: '',
-    });
-
-    // Esconder mensagem após 5 segundos
+    setFormData({ name: '', email: '', phone: '', message: '' });
     setTimeout(() => setSubmitted(false), 5000);
   };
 
@@ -311,7 +381,7 @@ Mensagem: ${formData.message}`;
               <div className="content">
                 <h3>Telefone</h3>
                 <p>
-                  <a href="tel:+5571999999999">(71) 99999-9999</a>
+                  <a href={`tel:${PHONE_NUMBER}`}>(71) 98356-1288</a>
                   <br />
                   Atendimento de segunda a sexta
                 </p>
@@ -324,11 +394,11 @@ Mensagem: ${formData.message}`;
                 <h3>WhatsApp</h3>
                 <p>
                   <a
-                    href="https://wa.me/5571999999999"
+                    href={WHATSAPP_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    (71) 99999-9999
+                    (71) 98356-1288
                   </a>
                   <br />
                   Resposta rápida e atendimento ágil
@@ -341,9 +411,7 @@ Mensagem: ${formData.message}`;
               <div className="content">
                 <h3>E-mail</h3>
                 <p>
-                  <a href="mailto:contato@luizlima.adv.br">
-                    contato@luizlima.adv.br
-                  </a>
+                  <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
                   <br />
                   Resposta em até 24 horas
                 </p>
@@ -448,7 +516,7 @@ Mensagem: ${formData.message}`;
             rapidamente e garantir seus direitos.
           </p>
           <WhatsAppButton
-            href="https://wa.me/5571999999999"
+            href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
           >

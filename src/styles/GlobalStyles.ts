@@ -14,6 +14,7 @@ export const GlobalStyles = createGlobalStyle<GlobalStylesProps>`
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
@@ -22,6 +23,26 @@ export const GlobalStyles = createGlobalStyle<GlobalStylesProps>`
     color: ${(props) => props.theme.text};
     overflow-x: hidden;
     transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
+    max-width: 100vw;
+    
+    &::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        radial-gradient(circle at 20% 50%, ${(props) =>
+          props.theme.accent}02 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, ${(props) =>
+          props.theme.accent}02 0%, transparent 50%),
+        linear-gradient(135deg, ${(props) =>
+          props.theme.accent}01 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
   }
 
   /* Classe para títulos elegantes usando Playfair Display (similar ao Carmilla) */

@@ -16,16 +16,16 @@ export interface Theme {
 
 export const lightTheme: Theme = {
   primary: '#ffffff',
-  secondary: '#f8f9fa',
-  background: '#f8f9fa',
-  backgroundAlt: '#ffffff',
+  secondary: '#f5f8fc',
+  background: '#fafbfd',
+  backgroundAlt: '#f0f4f8',
   cardBackground: '#ffffff',
-  text: '#1a1a1a',
-  textSecondary: '#495057',
-  accent: '#b8860b',
-  accentSecondary: '#d4af37',
-  border: 'rgba(184, 134, 11, 0.15)',
-  shadow: 'rgba(0, 0, 0, 0.1)',
+  text: '#0c3151',
+  textSecondary: '#5a708a',
+  accent: '#0c3151',
+  accentSecondary: '#1a4d6b',
+  border: 'rgba(12, 49, 81, 0.08)',
+  shadow: 'rgba(12, 49, 81, 0.15)',
 };
 
 export const darkTheme: Theme = {
@@ -65,17 +65,13 @@ interface ThemeProviderProps {
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [isDark, setIsDark] = useState(() => {
     const saved = localStorage.getItem('theme');
-    return saved ? saved === 'dark' : true; // Default to dark theme
+    return saved ? saved === 'dark' : true;
   });
 
   const theme = isDark ? darkTheme : lightTheme;
 
   const toggleTheme = () => {
-    setIsDark((prev) => {
-      const newValue = !prev;
-      localStorage.setItem('theme', newValue ? 'dark' : 'light');
-      return newValue;
-    });
+    setIsDark((prev) => !prev);
   };
 
   useEffect(() => {
