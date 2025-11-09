@@ -46,10 +46,16 @@ const HeroContent = styled.div`
   @media (max-width: 968px) {
     grid-template-columns: 1fr;
     text-align: center;
+    gap: 2rem;
+    grid-template-rows: auto auto auto auto;
   }
 `;
 
 const HeroText = styled.div`
+  @media (max-width: 968px) {
+    display: none;
+  }
+
   h1 {
     font-family: 'Playfair Display', Georgia, serif;
     font-size: 3.5rem;
@@ -102,13 +108,94 @@ const HeroText = styled.div`
   }
 `;
 
+const MobileHeroHeader = styled.div`
+  display: none;
+
+  @media (max-width: 968px) {
+    display: block;
+    text-align: center;
+    margin-bottom: 2rem;
+    order: 1;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+    font-weight: 700;
+    background: linear-gradient(135deg, #ffffff, #d4af37);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    @media (max-width: 480px) {
+      font-size: 2rem;
+    }
+  }
+
+  .subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.25rem;
+    color: #d4af37;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+
+    @media (max-width: 480px) {
+      font-size: 1.1rem;
+    }
+  }
+
+  .oab {
+    font-size: 1rem;
+    color: #999;
+    margin-bottom: 0;
+    font-weight: 500;
+  }
+`;
+
+const MobileHeroDescription = styled.div`
+  display: none;
+
+  @media (max-width: 968px) {
+    display: block;
+    text-align: center;
+    margin-bottom: 2rem;
+    order: 3;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #cccccc;
+    margin-bottom: 0;
+
+    @media (max-width: 480px) {
+      font-size: 0.95rem;
+    }
+  }
+`;
+
 const HeroButtons = styled.div`
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
 
   @media (max-width: 968px) {
+    display: none;
+  }
+`;
+
+const MobileHeroButtons = styled.div`
+  display: none;
+
+  @media (max-width: 968px) {
+    display: flex;
+    gap: 1rem;
     justify-content: center;
+    flex-wrap: wrap;
+    order: 4;
   }
 
   @media (max-width: 480px) {
@@ -176,7 +263,8 @@ const HeroImageContainer = styled.div`
   align-items: center;
 
   @media (max-width: 968px) {
-    margin-top: 2rem;
+    margin-top: 0;
+    order: 2;
   }
 `;
 
@@ -240,6 +328,7 @@ export const Hero: React.FC = () => {
   return (
     <HeroSection id="hero">
       <HeroContent>
+        {/* Layout Desktop */}
         <HeroText>
           <h1>Luiz Lima</h1>
           <div className="subtitle">Advogado Criminalista</div>
@@ -266,6 +355,35 @@ export const Hero: React.FC = () => {
           <HeroImage />
           <Badge>10+ Anos de Experiência</Badge>
         </HeroImageContainer>
+
+        {/* Layout Mobile - Header */}
+        <MobileHeroHeader>
+          <h1>Luiz Lima</h1>
+          <div className="subtitle">Advogado Criminalista</div>
+          <div className="oab">OAB/BA 44.444</div>
+        </MobileHeroHeader>
+
+        {/* Layout Mobile - Description */}
+        <MobileHeroDescription>
+          <p>
+            Defesa humanizada e técnica, com foco na dignidade e liberdade.
+            Atuação estratégica baseada em sólida formação acadêmica e
+            experiência em casos complexos envolvendo Direito Penal e Processual
+            Penal.
+          </p>
+        </MobileHeroDescription>
+
+        {/* Layout Mobile - Buttons */}
+        <MobileHeroButtons>
+          <PrimaryButton href="https://wa.me/5571999999999" target="_blank">
+            <MessageCircle />
+            WhatsApp
+          </PrimaryButton>
+          <SecondaryButton href="tel:+5571999999999">
+            <Phone />
+            Ligar Agora
+          </SecondaryButton>
+        </MobileHeroButtons>
       </HeroContent>
     </HeroSection>
   );
