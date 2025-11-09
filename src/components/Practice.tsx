@@ -11,7 +11,7 @@ import {
 
 const PracticeSection = styled.section`
   padding: 6rem 2rem;
-  background: #1a1a1a;
+  background: ${(props) => props.theme.background};
 `;
 
 const Container = styled.div`
@@ -20,10 +20,12 @@ const Container = styled.div`
 `;
 
 const SectionTitle = styled.h2`
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 1rem;
-  color: #d4af37;
+  color: ${(props) => props.theme.accent};
+  font-weight: 600;
 
   @media (max-width: 768px) {
     font-size: 2rem;
@@ -32,7 +34,7 @@ const SectionTitle = styled.h2`
 
 const SectionSubtitle = styled.p`
   text-align: center;
-  color: #cccccc;
+  color: ${(props) => props.theme.textSecondary};
   font-size: 1.1rem;
   margin-bottom: 4rem;
   max-width: 700px;
@@ -47,17 +49,14 @@ const CardsGrid = styled.div`
 `;
 
 const Card = styled.div`
-  background: linear-gradient(
-    135deg,
-    rgba(45, 45, 45, 0.9),
-    rgba(35, 35, 35, 0.9)
-  );
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  background: ${(props) => props.theme.cardBackground};
+  border: 1px solid ${(props) => props.theme.border};
   border-radius: 15px;
   padding: 2.5rem;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 4px 12px ${(props) => props.theme.shadow};
 
   &::before {
     content: '';
@@ -66,15 +65,20 @@ const Card = styled.div`
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, #d4af37, #f4d03f);
+    background: linear-gradient(
+      90deg,
+      ${(props) => props.theme.accent},
+      ${(props) => props.theme.accentSecondary}
+    );
     transform: scaleX(0);
     transition: transform 0.3s ease;
   }
 
   &:hover {
     transform: translateY(-10px);
-    border-color: rgba(212, 175, 55, 0.5);
-    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+    border-color: ${(props) => props.theme.accent}80;
+    box-shadow: 0 20px 40px ${(props) => props.theme.shadow},
+      0 8px 24px ${(props) => props.theme.accent}20;
 
     &::before {
       transform: scaleX(1);
@@ -84,28 +88,33 @@ const Card = styled.div`
   .icon {
     width: 50px;
     height: 50px;
-    color: #d4af37;
+    color: ${(props) => props.theme.accent};
     margin-bottom: 1.5rem;
   }
 
   h3 {
+    font-family: 'Montserrat', sans-serif;
     font-size: 1.5rem;
-    color: #ffffff;
+    color: ${(props) => props.theme.text};
     margin-bottom: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
   }
 
   p {
-    color: #cccccc;
+    font-family: 'Montserrat', sans-serif;
+    color: ${(props) => props.theme.textSecondary};
     line-height: 1.7;
     font-size: 1rem;
     margin-bottom: 1.5rem;
+    font-weight: 400;
   }
 
   ul {
     list-style: none;
 
     li {
-      color: #999;
+      color: ${(props) => props.theme.textSecondary};
       font-size: 0.95rem;
       margin-bottom: 0.5rem;
       padding-left: 1.25rem;
@@ -113,7 +122,7 @@ const Card = styled.div`
 
       &::before {
         content: '•';
-        color: #d4af37;
+        color: ${(props) => props.theme.accent};
         position: absolute;
         left: 0;
         font-weight: bold;

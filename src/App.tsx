@@ -1,4 +1,5 @@
 import React from 'react';
+import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import { GlobalStyles } from './styles/GlobalStyles';
 import { ThemeProvider, useTheme } from './contexts/ThemeContext';
 import { Header } from './components/Header';
@@ -13,7 +14,7 @@ const AppContent: React.FC = () => {
   const { theme } = useTheme();
 
   return (
-    <>
+    <StyledThemeProvider theme={theme}>
       <GlobalStyles theme={theme} />
       <Header />
       <Hero />
@@ -22,7 +23,7 @@ const AppContent: React.FC = () => {
       <Differentials />
       <Contact />
       <Footer />
-    </>
+    </StyledThemeProvider>
   );
 };
 

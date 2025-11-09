@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { Scale, Instagram, Linkedin, Mail, Phone } from 'lucide-react';
 
 const FooterContainer = styled.footer`
-  background: #2a2a2a;
-  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  background: ${(props) => props.theme.background};
+  border-top: 1px solid ${(props) => props.theme.border};
   padding: 3rem 2rem 1.5rem;
 `;
 
@@ -27,12 +27,14 @@ const FooterContent = styled.div`
 
 const FooterColumn = styled.div`
   h3 {
-    color: #d4af37;
+    font-family: 'Playfair Display', Georgia, serif;
+    color: ${(props) => props.theme.accent};
     font-size: 1.3rem;
     margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    font-weight: 600;
 
     svg {
       width: 24px;
@@ -41,7 +43,7 @@ const FooterColumn = styled.div`
   }
 
   p {
-    color: #999;
+    color: ${(props) => props.theme.textSecondary};
     line-height: 1.7;
     margin-bottom: 1rem;
     font-size: 0.95rem;
@@ -54,7 +56,7 @@ const FooterColumn = styled.div`
       margin-bottom: 0.75rem;
 
       a {
-        color: #999;
+        color: ${(props) => props.theme.textSecondary};
         text-decoration: none;
         transition: color 0.3s ease;
         display: flex;
@@ -63,7 +65,7 @@ const FooterColumn = styled.div`
         font-size: 0.95rem;
 
         &:hover {
-          color: #d4af37;
+          color: ${(props) => props.theme.accent};
         }
 
         svg {
@@ -85,17 +87,17 @@ const SocialIcon = styled.a`
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: rgba(212, 175, 55, 0.1);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  background: ${(props) => props.theme.accent}10;
+  border: 1px solid ${(props) => props.theme.accent}30;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #d4af37;
+  color: ${(props) => props.theme.accent};
   transition: all 0.3s ease;
 
   &:hover {
-    background: rgba(212, 175, 55, 0.2);
-    border-color: #d4af37;
+    background: ${(props) => props.theme.accent}20;
+    border-color: ${(props) => props.theme.accent};
     transform: translateY(-3px);
   }
 
@@ -110,7 +112,7 @@ const Divider = styled.div`
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(212, 175, 55, 0.3),
+    ${(props) => props.theme.border},
     transparent
   );
   margin: 2rem 0;
@@ -129,16 +131,16 @@ const FooterBottom = styled.div`
   }
 
   p {
-    color: #666;
+    color: ${(props) => props.theme.textSecondary};
     font-size: 0.9rem;
   }
 
   .credits {
-    color: #555;
+    color: ${(props) => props.theme.textSecondary};
     font-size: 0.85rem;
 
     a {
-      color: #d4af37;
+      color: ${(props) => props.theme.accent};
       text-decoration: none;
 
       &:hover {

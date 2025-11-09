@@ -11,7 +11,7 @@ import {
 
 const DifferentialsSection = styled.section`
   padding: 6rem 2rem;
-  background: #2a2a2a;
+  background: ${(props) => props.theme.background};
   position: relative;
 
   &::before {
@@ -21,7 +21,12 @@ const DifferentialsSection = styled.section`
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      ${(props) => props.theme.accent},
+      transparent
+    );
   }
 `;
 
@@ -31,10 +36,12 @@ const Container = styled.div`
 `;
 
 const SectionTitle = styled.h2`
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 1rem;
-  color: #d4af37;
+  color: ${(props) => props.theme.accent};
+  font-weight: 600;
 
   @media (max-width: 768px) {
     font-size: 2rem;
@@ -43,7 +50,7 @@ const SectionTitle = styled.h2`
 
 const SectionSubtitle = styled.p`
   text-align: center;
-  color: #cccccc;
+  color: ${(props) => props.theme.textSecondary};
   font-size: 1.1rem;
   margin-bottom: 4rem;
   max-width: 700px;
@@ -59,54 +66,43 @@ const Grid = styled.div`
 `;
 
 const DifferentialCard = styled.div`
-  background: linear-gradient(
-    135deg,
-    rgba(45, 45, 45, 0.8),
-    rgba(35, 35, 35, 0.8)
-  );
-  border: 1px solid rgba(212, 175, 55, 0.25);
+  background: ${(props) => props.theme.cardBackground};
+  border: 1px solid ${(props) => props.theme.border};
   border-radius: 15px;
   padding: 2rem;
   transition: all 0.3s ease;
   text-align: center;
+  box-shadow: 0 4px 12px ${(props) => props.theme.shadow};
 
   &:hover {
     transform: translateY(-5px);
-    border-color: rgba(212, 175, 55, 0.4);
-    background: linear-gradient(
-      135deg,
-      rgba(55, 55, 55, 0.9),
-      rgba(45, 45, 45, 0.9)
-    );
+    border-color: ${(props) => props.theme.accent}80;
+    box-shadow: 0 8px 24px ${(props) => props.theme.shadow};
   }
 
   .icon {
     width: 50px;
     height: 50px;
-    color: #d4af37;
+    color: ${(props) => props.theme.accent};
     margin: 0 auto 1.5rem;
   }
 
   h3 {
     font-size: 1.3rem;
-    color: #ffffff;
+    color: ${(props) => props.theme.text};
     margin-bottom: 1rem;
   }
 
   p {
-    color: #cccccc;
+    color: ${(props) => props.theme.textSecondary};
     line-height: 1.7;
     font-size: 0.95rem;
   }
 `;
 
 const ExperienceBox = styled.div`
-  background: linear-gradient(
-    135deg,
-    rgba(212, 175, 55, 0.1),
-    rgba(212, 175, 55, 0.05)
-  );
-  border: 2px solid rgba(212, 175, 55, 0.3);
+  background: ${(props) => props.theme.accent}10;
+  border: 2px solid ${(props) => props.theme.accent}30;
   border-radius: 20px;
   padding: 3rem;
   text-align: center;
@@ -114,7 +110,7 @@ const ExperienceBox = styled.div`
 
   h3 {
     font-size: 2rem;
-    color: #d4af37;
+    color: ${(props) => props.theme.accent};
     margin-bottom: 1.5rem;
 
     @media (max-width: 768px) {
@@ -131,18 +127,25 @@ const ExperienceBox = styled.div`
   }
 `;
 
+const ExperienceText = styled.p`
+  color: ${(props) => props.theme.textSecondary};
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+`;
+
 const InstitutionBadge = styled.div`
-  background: rgba(212, 175, 55, 0.1);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  background: ${(props) => props.theme.accent}10;
+  border: 1px solid ${(props) => props.theme.accent}30;
   border-radius: 8px;
   padding: 1rem 1.5rem;
-  color: #d4af37;
+  color: ${(props) => props.theme.accent};
   font-weight: 600;
   font-size: 0.95rem;
   transition: all 0.3s ease;
 
   &:hover {
-    background: rgba(212, 175, 55, 0.2);
+    background: ${(props) => props.theme.accent}20;
     transform: scale(1.05);
   }
 `;
@@ -159,27 +162,27 @@ const ValueItem = styled.div`
   align-items: start;
   gap: 1rem;
   padding: 1.5rem;
-  background: rgba(35, 35, 35, 0.7);
+  background: ${(props) => props.theme.cardBackground};
   border-radius: 8px;
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  border: 1px solid ${(props) => props.theme.border};
 
   .check-icon {
     width: 24px;
     height: 24px;
-    color: #d4af37;
+    color: ${(props) => props.theme.accent};
     flex-shrink: 0;
     margin-top: 0.25rem;
   }
 
   div {
     h4 {
-      color: #ffffff;
+      color: ${(props) => props.theme.text};
       font-size: 1.1rem;
       margin-bottom: 0.5rem;
     }
 
     p {
-      color: #999;
+      color: ${(props) => props.theme.textSecondary};
       font-size: 0.9rem;
       line-height: 1.6;
     }
@@ -255,18 +258,11 @@ export const Differentials: React.FC = () => {
 
         <ExperienceBox>
           <h3>Experiência em Instituições de Relevância Social e Jurídica</h3>
-          <p
-            style={{
-              color: '#cccccc',
-              fontSize: '1.05rem',
-              lineHeight: '1.8',
-              marginBottom: '1rem',
-            }}
-          >
+          <ExperienceText>
             Trajetória que inclui participação ativa em instituições que
             refletem o compromisso com a justiça social e a defesa dos direitos
             fundamentais.
-          </p>
+          </ExperienceText>
           <div className="institutions">
             <InstitutionBadge>
               Comissão de Sistema Prisional - OAB/BA

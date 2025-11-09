@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon, ArrowUpRight } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 
 const HeaderContainer = styled.header<{ $scrolled: boolean }>`
@@ -10,12 +10,12 @@ const HeaderContainer = styled.header<{ $scrolled: boolean }>`
   right: 0;
   z-index: 1000;
   background: ${(props) =>
-    props.$scrolled ? 'rgba(26, 26, 26, 0.95)' : 'transparent'};
+    props.$scrolled ? `${props.theme.background}f0` : 'transparent'};
   backdrop-filter: ${(props) => (props.$scrolled ? 'blur(10px)' : 'none')};
   transition: all 0.3s ease;
   padding: 1.5rem 2rem;
   border-bottom: ${(props) =>
-    props.$scrolled ? '1px solid rgba(212, 175, 55, 0.2)' : 'none'};
+    props.$scrolled ? `1px solid ${props.theme.border}` : 'none'};
 
   @media (max-width: 768px) {
     padding: 1rem;
@@ -65,26 +65,28 @@ const NavLinks = styled.div<{ $isOpen: boolean }>`
     height: 100vh;
     width: 70%;
     max-width: 300px;
-    background: rgba(30, 30, 30, 0.98);
+    background: ${(props) => `${props.theme.backgroundAlt}f8`};
     backdrop-filter: blur(20px);
     flex-direction: column;
     padding: 5rem 2rem;
     transition: right 0.3s ease;
-    border-left: 1px solid rgba(212, 175, 55, 0.2);
+    border-left: 1px solid ${(props) => props.theme.border};
     gap: 2.5rem;
   }
 `;
 
 const NavLink = styled.a`
-  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  color: ${(props) => props.theme.text};
   text-decoration: none;
   font-weight: 500;
+  letter-spacing: 0.3px;
   transition: color 0.3s ease;
   cursor: pointer;
   font-size: 1rem;
 
   &:hover {
-    color: #d4af37;
+    color: ${(props) => props.theme.accent};
   }
 
   @media (max-width: 768px) {
@@ -113,21 +115,21 @@ const MenuButton = styled.button`
 
 const ThemeToggle = styled.button`
   background: none;
-  border: 2px solid #d4af37;
+  border: 2px solid ${(props) => props.theme.accent};
   border-radius: 50%;
   width: 44px;
   height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #d4af37;
+  color: ${(props) => props.theme.accent};
   cursor: pointer;
   transition: all 0.3s ease;
   margin-left: 1rem;
 
   &:hover {
-    background: #d4af37;
-    color: #0a0a0a;
+    background: ${(props) => props.theme.accent};
+    color: ${(props) => props.theme.background};
     transform: scale(1.1);
   }
 
@@ -155,14 +157,18 @@ const HeaderControls = styled.div`
 `;
 
 const CTAButton = styled.a`
+  font-family: 'Montserrat', sans-serif;
   background: linear-gradient(135deg, #d4af37, #f4d03f);
   color: #0a0a0a;
   padding: 0.75rem 1.5rem;
-  border-radius: 50px;
+  border-radius: 12px;
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 600;
+  letter-spacing: 0.3px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-size: 0.95rem;
 
   &:hover {
@@ -170,8 +176,23 @@ const CTAButton = styled.a`
     box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
   }
 
+  svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover svg {
+    transform: translateX(2px);
+  }
+
   @media (max-width: 768px) {
     padding: 0.65rem 1.25rem;
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
   }
 `;
 
@@ -237,6 +258,7 @@ export const Header: React.FC = () => {
             </NavLink>
             <CTAButton href="https://wa.me/5571999999999" target="_blank">
               Consulta Urgente
+              <ArrowUpRight />
             </CTAButton>
           </NavLinks>
 

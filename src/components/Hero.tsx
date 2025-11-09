@@ -51,9 +51,11 @@ const HeroContent = styled.div`
 
 const HeroText = styled.div`
   h1 {
+    font-family: 'Playfair Display', Georgia, serif;
     font-size: 3.5rem;
     margin-bottom: 1rem;
     line-height: 1.1;
+    font-weight: 700;
     background: linear-gradient(135deg, #ffffff, #d4af37);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -69,10 +71,12 @@ const HeroText = styled.div`
   }
 
   .subtitle {
+    font-family: 'Montserrat', sans-serif;
     font-size: 1.5rem;
     color: #d4af37;
     margin-bottom: 1.5rem;
-    font-weight: 600;
+    font-weight: 500;
+    letter-spacing: 0.5px;
 
     @media (max-width: 768px) {
       font-size: 1.25rem;
@@ -113,12 +117,14 @@ const HeroButtons = styled.div`
 `;
 
 const PrimaryButton = styled.a`
+  font-family: 'Montserrat', sans-serif;
   background: linear-gradient(135deg, #d4af37, #f4d03f);
   color: #0a0a0a;
   padding: 1rem 2.5rem;
   border-radius: 50px;
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 600;
+  letter-spacing: 0.5px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: inline-flex;
   align-items: center;
@@ -137,13 +143,15 @@ const PrimaryButton = styled.a`
 `;
 
 const SecondaryButton = styled.a`
+  font-family: 'Montserrat', sans-serif;
   background: transparent;
   color: #d4af37;
   border: 2px solid #d4af37;
   padding: 1rem 2.5rem;
   border-radius: 50px;
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 600;
+  letter-spacing: 0.5px;
   transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;

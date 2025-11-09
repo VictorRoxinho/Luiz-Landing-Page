@@ -17,11 +17,21 @@ export const GlobalStyles = createGlobalStyle<GlobalStylesProps>`
   }
 
   body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background: ${(props) => props.theme.background};
     color: ${(props) => props.theme.text};
     overflow-x: hidden;
     transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Classe para títulos elegantes usando Playfair Display (similar ao Carmilla) */
+  .elegant-title {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  /* Classe para texto corpo usando Montserrat */
+  .body-text {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
   ::-webkit-scrollbar {

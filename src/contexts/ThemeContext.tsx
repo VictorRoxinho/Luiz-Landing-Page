@@ -17,14 +17,14 @@ export interface Theme {
 export const lightTheme: Theme = {
   primary: '#ffffff',
   secondary: '#f8f9fa',
-  background: '#ffffff',
-  backgroundAlt: '#f8f9fa',
-  cardBackground: 'rgba(255, 255, 255, 0.9)',
-  text: '#212529',
-  textSecondary: '#6c757d',
-  accent: '#d4af37',
-  accentSecondary: '#f4d03f',
-  border: 'rgba(212, 175, 55, 0.3)',
+  background: '#f8f9fa',
+  backgroundAlt: '#ffffff',
+  cardBackground: '#ffffff',
+  text: '#1a1a1a',
+  textSecondary: '#495057',
+  accent: '#b8860b',
+  accentSecondary: '#d4af37',
+  border: 'rgba(184, 134, 11, 0.15)',
   shadow: 'rgba(0, 0, 0, 0.1)',
 };
 

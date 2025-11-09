@@ -4,7 +4,7 @@ import { Phone, Mail, MapPin, MessageCircle, Clock, Send } from 'lucide-react';
 
 const ContactSection = styled.section`
   padding: 6rem 2rem;
-  background: #1a1a1a;
+  background: ${(props) => props.theme.background};
   position: relative;
 `;
 
@@ -14,10 +14,12 @@ const Container = styled.div`
 `;
 
 const SectionTitle = styled.h2`
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 1rem;
-  color: #d4af37;
+  color: ${(props) => props.theme.accent};
+  font-weight: 600;
 
   @media (max-width: 768px) {
     font-size: 2rem;
@@ -26,7 +28,7 @@ const SectionTitle = styled.h2`
 
 const SectionSubtitle = styled.p`
   text-align: center;
-  color: #cccccc;
+  color: ${(props) => props.theme.textSecondary};
   font-size: 1.1rem;
   margin-bottom: 4rem;
   max-width: 700px;
@@ -52,12 +54,8 @@ const ContactInfo = styled.div`
 `;
 
 const InfoCard = styled.div`
-  background: linear-gradient(
-    135deg,
-    rgba(45, 45, 45, 0.9),
-    rgba(35, 35, 35, 0.9)
-  );
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  background: ${(props) => props.theme.cardBackground};
+  border: 1px solid ${(props) => props.theme.border};
   border-radius: 15px;
   padding: 2rem;
   display: flex;
@@ -66,14 +64,14 @@ const InfoCard = styled.div`
   transition: all 0.3s ease;
 
   &:hover {
-    border-color: rgba(212, 175, 55, 0.5);
+    border-color: ${(props) => props.theme.accent}80;
     transform: translateX(5px);
   }
 
   .icon {
     width: 40px;
     height: 40px;
-    color: #d4af37;
+    color: ${(props) => props.theme.accent};
     flex-shrink: 0;
   }
 
@@ -81,23 +79,23 @@ const InfoCard = styled.div`
     flex: 1;
 
     h3 {
-      color: #d4af37;
+      color: ${(props) => props.theme.accent};
       font-size: 1.2rem;
       margin-bottom: 0.5rem;
     }
 
     p {
-      color: #cccccc;
+      color: ${(props) => props.theme.textSecondary};
       line-height: 1.7;
       font-size: 1rem;
 
       a {
-        color: #d4af37;
+        color: ${(props) => props.theme.accent};
         text-decoration: none;
         transition: color 0.3s ease;
 
         &:hover {
-          color: #f4d03f;
+          color: ${(props) => props.theme.accent}cc;
         }
       }
     }
@@ -105,12 +103,8 @@ const InfoCard = styled.div`
 `;
 
 const ContactForm = styled.form`
-  background: linear-gradient(
-    135deg,
-    rgba(45, 45, 45, 0.9),
-    rgba(35, 35, 35, 0.9)
-  );
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  background: ${(props) => props.theme.cardBackground};
+  border: 1px solid ${(props) => props.theme.border};
   border-radius: 15px;
   padding: 2.5rem;
 `;
@@ -120,7 +114,7 @@ const FormGroup = styled.div`
 
   label {
     display: block;
-    color: #d4af37;
+    color: ${(props) => props.theme.accent};
     font-weight: 600;
     margin-bottom: 0.5rem;
     font-size: 0.95rem;
@@ -129,23 +123,23 @@ const FormGroup = styled.div`
   input,
   textarea {
     width: 100%;
-    background: rgba(25, 25, 25, 0.9);
-    border: 1px solid rgba(212, 175, 55, 0.4);
+    background: ${(props) => props.theme.background};
+    border: 1px solid ${(props) => props.theme.border};
     border-radius: 8px;
     padding: 0.875rem;
-    color: #ffffff;
+    color: ${(props) => props.theme.text};
     font-size: 1rem;
     font-family: inherit;
     transition: all 0.3s ease;
 
     &:focus {
       outline: none;
-      border-color: #d4af37;
-      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+      border-color: ${(props) => props.theme.accent};
+      box-shadow: 0 0 0 3px ${(props) => props.theme.accent}10;
     }
 
     &::placeholder {
-      color: #666;
+      color: ${(props) => props.theme.textSecondary};
     }
   }
 
@@ -188,12 +182,8 @@ const SubmitButton = styled.button`
 `;
 
 const WhatsAppCTA = styled.div`
-  background: linear-gradient(
-    135deg,
-    rgba(37, 211, 102, 0.1),
-    rgba(37, 211, 102, 0.05)
-  );
-  border: 2px solid rgba(37, 211, 102, 0.3);
+  background: #25d36610;
+  border: 2px solid #25d36630;
   border-radius: 20px;
   padding: 3rem;
   text-align: center;
@@ -210,7 +200,7 @@ const WhatsAppCTA = styled.div`
   }
 
   p {
-    color: #cccccc;
+    color: ${(props) => props.theme.textSecondary};
     font-size: 1.1rem;
     margin-bottom: 2rem;
     line-height: 1.7;
